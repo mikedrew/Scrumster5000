@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<title>Scrumster 5000</title>
+
+	<link rel='stylesheet' type='text/css' href='style/fullpage.css' />	
+	<link rel='stylesheet' type='text/css' href='style/style.css' />	
+</head>
+<body>
+
+	<div id='fullpage'>
+		<div class='section active' id='section0' data-anchor='homeSection'>
+			<img id='mascotImage'/>
+			<h1>Welcome to Scrum</h1>		
+		</div>
+		<div class='section' id='section1' data-anchor='storiesSection'>
+			<h1 id='storyParkingLotTitle'>Stories</h1>
+			<embed 
+				id='storiesEmbed'
+				src=''
+				width='1600'
+				height='800'>
+			</embed>		
+		</div>
+		<div class='section' id='section2' data-anchor='statsSection'>
+			<h1>Stats</h1>
+			<div class='embedWrapper'>
+			<embed 
+				id='statsEmbed'
+				src=''
+				width='1600'
+				height='800'>
+			</embed>		
+			</div>
+		</div>
+		<div class='section' id='section3' data-anchor='voteSection'>
+			<div>			
+				<h1>Confidence Vote</h1>
+				<p>From 1 to 5 how confident are you that all commited stories will be completed by the end of the sprint?</p>
+			</div>		
+		</div>
+		<div class='section' id='section3' data-anchor='parkingLotSection'>
+			<div>
+				<h1>Parking Lot</h1>
+				<button id='parkingLotButton'>Go to Parking Lot</button>
+			</div>
+			
+		</div>
+	</div>
+
+	<script type='text/javascript' src='js/fullpage.js'></script>
+	<script type='text/javascript' src='config.js'></script>
+
+	<script type='text/javascript'>
+
+		window.onload = function(){
+			
+			document.title = CONFIG.title;
+			
+			document.getElementById('storiesEmbed').src = CONFIG.storyUrl;
+			document.getElementById('statsEmbed').src = CONFIG.statsUrl;
+
+			document.getElementById('mascotImage').src = CONFIG.mascotImage;
+			
+			var myFullpage = new fullpage('#fullpage', {
+				licenseKey: CONFIG.fullpageLicenseKey,
+				sectionsColor: ['#FB0007', '#139177', '#ED9E08', '#F56F08', '#4CAECC'],	
+				anchors: ['homeSection', 'storiesSection', 'statsSection', 'voteSection','parkingLotSection']
+
+			});
+
+			document.getElementById('parkingLotButton').onclick = function(e){
+				
+				document.getElementById('storyParkingLotTitle').innerHTML = 'Parking Lot'
+				
+				location.href='#storiesSection';
+
+			};
+		};
+
+
+		
+			
+	</script>
+
+</body>
+</html>
